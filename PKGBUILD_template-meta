@@ -1,0 +1,14 @@
+# Template for tydomain
+# Maintainer tyguius <ta.tgyns13[at]gmail.com>
+pkgname=""
+pkgdesc=""
+pkgver=0.0.0.0
+pkgrel=0
+url="https://github.com/tyguius/tyrepo"
+arch=('x86_64')
+license=('custom')
+
+package_depends=($(grep -v "^#" "$pkgname.depends"))
+package() {
+    depends=("${package_depends[@]}")
+}

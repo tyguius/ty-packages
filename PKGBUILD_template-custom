@@ -1,0 +1,21 @@
+# Template for tydomain
+# Maintainer tyguius <ta.tgyns13[at]gmail.com>
+pkgname=""
+pkgdesc=""
+pkgver=0.0.0.0
+pkgrel=0
+url="https://github.com/tyguius/tyrepo"
+arch=('x86_64')
+license=('custom')
+installdir="/etc/ty/$pkgname"
+
+source ../ty-frame.sh
+
+install_hooks_from_file
+sources_from_file
+package_depends=($(grep -v "^#" "$pkgname.depends"))
+
+package() {
+    mkdir -p $installdir
+    depends=("${package_depends[@]}")
+}

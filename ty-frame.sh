@@ -75,13 +75,13 @@ tyguius_make_package() {
     source ./PKGBUILD
     cd ..
     git add .
-    git tag "$pkgname-$pkgver-$pkgrel"
     if [ -z "$changes" ] || [ "$changes" = "-release" ]
     then
         git commit -m "Auto commit on build of new release. $pkgname-$pkgver-$pkgrel"
     else
         git commit -m "$pkgname-$pkgver-$pkgrel: $changes"
     fi
+    git tag "$pkgname-$pkgver-$pkgrel"
     git push -u origin master
     cd $pkgname
     export SRCDEST="./src"

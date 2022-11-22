@@ -60,7 +60,7 @@ update_pkgver() {
     read -p "current version $pkgver. Set new version: "
     pkgver="$REPLY"
     sed -i -e "/^pkgver=/s|.*|pkgver=$pkgver|" PKGBUILD
-    sed -i -e "/^pkgrel=/s|.*|pkgrel=0|" PKGBUILD
+    sed -i -e "/^pkgrel=/s|.*|pkgrel=1|" PKGBUILD
 }
 
 tyguius_make_package() {

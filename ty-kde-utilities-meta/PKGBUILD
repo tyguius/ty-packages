@@ -3,13 +3,12 @@
 pkgname="ty-kde-utilities-meta"
 pkgdesc="Meta package with Core utilitites for KDE Desktop Environment"
 pkgver=0.1.1.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
 
-source ../ty-frame.sh
-
+package_depends=($(grep -v "^#" "$pkgname.depends"))
 package() {
-    depends_from_file $pkgname
+    depends=("${package_depends[@]}")
 }

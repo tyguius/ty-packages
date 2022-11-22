@@ -11,3 +11,4 @@ _packages used on every Desktop machine_
 ## TODO:
 - [ ] make a package
 - [ ] get rid of path relativity
+- [ ] merge push/update tyrepo and package(s)

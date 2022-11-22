@@ -82,7 +82,7 @@ tyguius_make_package() {
     else
         git commit -m "$pkgname-$pkgver-$pkgrel: $changes"
     fi
-    git tag "$pkgname-$pkgver-$pkgrel"
+    git tag $pkgname-$pkgver-$pkgrel
     git push -u origin master
     cd $pkgname
     export SRCDEST="./src"
@@ -116,6 +116,7 @@ tyguius_tyrepo_update() {
         else
             git commit -m "$changes in $package"
         fi
+        git tag $pkgname-$pkgver-$pkgrel
         git push -u origin master
     fi
 }

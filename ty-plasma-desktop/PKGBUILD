@@ -3,28 +3,26 @@
 pkgname="ty-plasma-desktop"
 pkgdesc="custom configuration of plasma desktop and some applications"
 pkgver=0.0.0.3
-pkgrel=5
+pkgrel=6
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
-skel_config=/etc/skel/.config
-ty_skel_config=/etc/ty/skel/.config
+skel_config=/etc/skel/.config/
+ty_skel_config=/etc/ty/skel/.config/
 
 source ../ty-frame.sh
 
 install_hooks_from_file $pkgname
 sources_from_file $pkgname
 
-package_depends=($(grep -v "^#" "$pkgname.depends"))
-
 package() {
     mkdir -p ${pkgdir}$skel_config
     mkdir -p ${pkgdir}$ty_skel_config
     # depends=("${package_depends[@]}")
     depends_from_file $pkgname
-    for source in "${source[@]}"; do
-        install -D --verbose --compare -m644 "${srcdir}/$source" "${pkgdir}$skel_config"
-        install -D --verbose --compare -m644 "${srcdir}/$source" "${pkgdir}$ty_skel_config"
+    for file in "${source[@]}"; do
+        install -D --verbose --compare -m644 "${srcdir}/$file" "${pkgdir}$skel_config"
+        install -D --verbose --compare -m644 "${srcdir}/$file" "${pkgdir}$ty_skel_config"
     done
 }
 sha256sums=('ac24411513d83c8a7a7ee8b5d87ab4a249fd651db5485a3641cea78d178ae4df'

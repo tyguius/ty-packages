@@ -9,13 +9,17 @@ arch=('x86_64')
 license=('custom')
 installdir="/etc/ty/$pkgname"
 
+# source helper functions
 source ../ty-frame.sh
 
-install_hooks_from_file
-sources_from_file
-package_depends=($(grep -v "^#" "$pkgname.depends"))
+install_hooks_from_file $pkgname
+sources_from_file $pkgname
+
 
 package() {
-    mkdir -p $installdir
-    depends=("${package_depends[@]}")
+    mkdir -p ${pkgdir}$installdir
+    depends_from_file $pkgname
+    for file in "${source[@]}"; do
+        install -D --verbose --compare -m644 "${srcdir}$file" "${pkgdir}$installdir/"
+    done
 }

@@ -1,0 +1,15 @@
+[Appearance]
+BackgroundColor=255,255,255
+BackgroundColorOpacity=60
+HideSkinBorders=true
+
+[Desktop Entry]
+DefaultProfile=
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+KeepOpen=false
+ShowTabBar=false
+Width=70

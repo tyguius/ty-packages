@@ -26,13 +26,14 @@ force_read() {
 # use $pkgname.txt if exists
 # STUB
 depends_from_file() {
-    [[ -f "$1.txt" ]] && depends=($(grep -v "^#" "$1.depends"))
-    return
+    [[ -f "$1.depends" ]] && depends=($(grep -v "^#" "$1.depends"))
+    return 0
 }
 
 # use $pkgname.sources if exists
 sources_from_file() {
     [[ -f "$1.sources" ]] && source=($(grep -v "^#" "$1.sources"))
+    return 0
 }
 
 # sources_from_dir() {

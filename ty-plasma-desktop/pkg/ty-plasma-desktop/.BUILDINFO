@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-plasma-desktop
 pkgbase = ty-plasma-desktop
-pkgver = 0.0.0.3-2
+pkgver = 0.0.0.3-3
 pkgarch = x86_64
-pkgbuild_sha256sum = 174b2d0e5d667aae9f8cd0c4b92bb2b501b63e02e5c816580ee442d97bf080db
+pkgbuild_sha256sum = 0174855056e3857d832417934505dd2e7787ecb1240adf6114aede3156dab5b2
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669243949
+builddate = 1669244292
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-plasma-desktop
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-plasma-desktop
 buildtool = makepkg

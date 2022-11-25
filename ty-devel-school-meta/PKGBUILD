@@ -3,10 +3,12 @@
 pkgname="ty-devel-school-meta"
 pkgdesc="packages needed for UNI and coding"
 pkgver=0.0.0.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
+
+source ../ty-frame.sh
 
 package() {
     depends_from_file $pkgname

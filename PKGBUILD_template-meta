@@ -8,6 +8,8 @@ url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
 
+source ../ty-frame.sh
+
 package() {
     depends_from_file $pkgname
 }

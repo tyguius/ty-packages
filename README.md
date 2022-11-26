@@ -8,7 +8,8 @@ _packages used on every Desktop machine_
 
 ### ty-plasma-desktop
 
-
+## buil-dependencies
+- electron-12 (balena-etcher)
 
 # ty-frame
 ## TODO:

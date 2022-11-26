@@ -2,8 +2,8 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-kde-multimedia"
 pkgdesc="multimedia package collection"
-pkgver=0.0.0.1
-pkgrel=0
+pkgver=0.0.1.0
+pkgrel=1
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

@@ -2,11 +2,15 @@
 # using fakeroot version 1.30.1
 pkgname = ty-kate
 pkgbase = ty-kate
-pkgver = 1.6.0.0-1
+pkgver = 1.6.0.0-2
 pkgdesc = kate with custom dependencies and config
 url = https://github.com/tyguius/
-builddate = 1669569699
+builddate = 1669576576
 packager = tyguius <ta.tgyns13@gmail.com>
 size = 12140
 arch = x86_64
 license = custom
+depend = kate
+depend = ctags
+depend = shellcheck
+depend = bash-language-server

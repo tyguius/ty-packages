@@ -490,7 +490,7 @@ server_install() {
 }
 
 choose_desktop_packages() {
-    DESKTOP_PACKAGES_MENUITEMS=('kate' 'kate' 'on' 'falkon' 'falkon' 'on' 'kphotoalbum' 'kphotoalbum' 'off' 'intellij-idea-community-edition' 'Intellij IDE' 'off' 'ty-kde-utilities-meta' 'ty-kde-utilities' 'on' 'vlc' 'vlc' 'off' 'kwallet' 'kwallet' 'on' 'ty-plasma-desktop' 'some config files' 'off')
+    DESKTOP_PACKAGES_MENUITEMS=('ty-devel-school-meta' 'IDEs and stuff' 'off' 'ty-kde-multimedia' 'video, photos and stuff' 'off' 'ty-kde-utilities-meta' 'system administration utilities' 'off' 'ty-plasma-desktop' 'KDE Plasma customization' 'off' )
     DESKTOP_PACKAGES_OPTIONAL=$(dialog --clear --stdout --backtitle "$BACKTITLE" --title "$TITLE" --checklist "Please choose Desktop packages to install:" $DIMENSIONS 0 "${DESKTOP_PACKAGES_MENUITEMS[@]}")
 #     for CHOICE in "${CHOICES[@]}"
 #     do
@@ -500,7 +500,7 @@ choose_desktop_packages() {
 
 desktop_install() {
     XORG_PACKAGES=('xorg' 'xf86-video-nouveau')
-    DESKTOP_PACKAGES_BASIC=('sddm' 'plasma' 'konsole' 'kwrite' 'okular' 'dolphin' 'fuse2' 'xclip')
+    DESKTOP_PACKAGES_BASIC=('sddm' 'plasma' 'konsole' 'kwrite' 'okular' 'dolphin' 'fuse2' 'xclip' 'ttf-dejavu' 'pipewire-jack' 'pipewire-media-session' 'phonon-qt-5-vlc' 'python-pyqt5')
 #    SOUND_PACKAGES=('pulseaudio' 'pulseaudio-jack' 'pulseaudio-alsa' 'phonon-qt-5-vlc'  'kmix')
     choose_desktop_packages
     arch-chroot /mnt pacman -S "${XORG_PACKAGES[@]}"

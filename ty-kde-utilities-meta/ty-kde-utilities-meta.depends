@@ -20,5 +20,6 @@ print-manager
 skanpage
 sweeper
 yakuake
-ty-syncthing-desktop
+# ty-syncthing-desktop
+syncthing
 kdeconnect

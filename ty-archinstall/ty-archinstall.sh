@@ -484,7 +484,7 @@ choose_editor
 # PACKAGES
 ###########################################################
 server_install() {
-    arch-chroot /mnt pacman -S openssh emacs
+    arch-chroot /mnt pacman -S openssh
     arch-chroot /mnt systemctl enable sshd.service
     sleep 10
 }

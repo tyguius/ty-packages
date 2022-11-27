@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-syncthing-desktop
 pkgbase = ty-syncthing-desktop
-pkgver = 0.0.1.0-2
+pkgver = 0.0.1.0-3
 pkgarch = x86_64
-pkgbuild_sha256sum = b2ea8476d84f71e8141d6e0dce62cf6844728388ad133fc0a3060a688e558f1d
+pkgbuild_sha256sum = 0c412be25521db7b1b8aac911b6866ab1f3302ffbdd274924da9d8e6c76110d2
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669576596
+builddate = 1669577341
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-syncthing-desktop
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-syncthing-desktop
 buildtool = makepkg

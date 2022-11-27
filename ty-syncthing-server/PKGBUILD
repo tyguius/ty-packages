@@ -3,7 +3,7 @@
 pkgname="ty-syncthing-server"
 pkgdesc="headless syncthing"
 pkgver=0.0.1.0
-pkgrel=2
+pkgrel=3
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

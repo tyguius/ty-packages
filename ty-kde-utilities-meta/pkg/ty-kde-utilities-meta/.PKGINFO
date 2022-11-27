@@ -2,10 +2,10 @@
 # using fakeroot version 1.30.1
 pkgname = ty-kde-utilities-meta
 pkgbase = ty-kde-utilities-meta
-pkgver = 0.1.1.2-1
+pkgver = 0.1.1.3-1
 pkgdesc = Meta package with Core utilitites for KDE Plasma Desktop Environment
 url = https://github.com/tyguius/tyrepo
-builddate = 1669560009
+builddate = 1669560951
 packager = tyguius <ta.tgyns13@gmail.com>
 size = 0
 arch = x86_64
@@ -33,3 +33,4 @@ depend = skanpage
 depend = sweeper
 depend = yakuake
 depend = ty-syncthing-desktop
+depend = kdeconnect

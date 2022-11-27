@@ -7,3 +7,6 @@ texstudio
 texlive
 # rstudio-desktop-bin
 r
+base-devel
+# whole package group (kmail etc)
+kde-pim

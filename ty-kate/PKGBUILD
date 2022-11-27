@@ -1,30 +1,29 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-kate"
 pkgdesc="kate with custom dependencies and config"
+pkgver=1.5.0.2
+pkgrel=0
 url='https://github.com/tyguius/'
 arch=('x86_64')
 license=('custom')
-pkgver=1.5.0.2
-pkgrel=0
+skel_config=/etc/skel/.config/
+ty_skel_config=/etc/ty/skel/.config/
 
-# integrate helper functions for automatic setting of variables
-source ../frame_tyrepo.sh
+source ../ty-frame.sh
 
-# get $depends from file
-depends_from_file $pkgname
-
-# get $source files from file
+install_hooks_from_file $pkgname
 sources_from_file $pkgname
 
 # install config files
 package() {
-    mkdir -p "${pkgdir}/~/.config"
-    install -D -o "$USER" -g "$USER" --verbose --compare -m644 "${srcdir}/katerc" "${pkgdir}/~/.config/"
-    install -D -o "$USER" -g "$USER" --verbose --compare -m644 "${srcdir}/katevirc" "${pkgdir}/~/.config/"
+    mkdir -p ${pkgdir}$skel_config
+    mkdir -p ${pkgdir}$ty_skel_config
+    depends_from_file $pkgname
+    for file in "${source[@]}"; do
+        install -D --verbose --compare -m644 "${srcdir}/$file" "${pkgdir}$skel_config"
+        install -D --verbose --compare -m644 "${srcdir}/$file" "${pkgdir}$ty_skel_config"
+    done
 }
-
-# get install hooks from file
-install_hooks_from_file "$pkgname"
 
 sha256sums=('a72624569c65d322721b3e7542ab392163a637fced3938e2edbcd5add2e0ca7f'
             'c28e19d1ef995099fd7bc1728085b628c3d4440d0f1ae5815c902c0b8355a878')

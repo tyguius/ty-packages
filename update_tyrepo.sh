@@ -6,7 +6,7 @@ export PKGDEST="$HOME/Tyrepo"
 if [ -z "$1" ]
 then
     echo "re-releasing complete database"
-    for directory in $(ls -d */)
+    for directory in $(ls -d ty*/)
         do
             cd "$directory"
             tyguius_make_package

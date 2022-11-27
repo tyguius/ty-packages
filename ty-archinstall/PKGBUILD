@@ -3,7 +3,7 @@
 pkgname="ty-archinstall"
 pkgdesc="Script to automate arch linux system setup in the tydomain"
 pkgver=0.5.1.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

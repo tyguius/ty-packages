@@ -2,8 +2,8 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-plasma-desktop"
 pkgdesc="custom configuration of plasma desktop and some applications"
-pkgver=0.0.0.3
-pkgrel=7
+pkgver=0.0.0.4
+pkgrel=1
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

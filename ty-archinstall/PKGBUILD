@@ -3,7 +3,7 @@
 pkgname="ty-archinstall"
 pkgdesc="Script to automate arch linux system setup in the tydomain"
 pkgver=0.5.1.0
-pkgrel=2
+pkgrel=3
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
@@ -11,6 +11,7 @@ installdir=/usr/share/ty/ty-archinstall/
 source ../ty-frame.sh
 
 sources_from_file $pkgname
+
 package() {
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}$installdir"

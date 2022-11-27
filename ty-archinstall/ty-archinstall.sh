@@ -514,6 +514,9 @@ desktop_install() {
     sleep 10
 }
 
+arch-chroot /mnt pacman -Syy
+
+
 TITLE="PACKAGES"
 SYSTEM_TYPES=( 'DESKTOP' 'choose packages for KDE Plasma desktop environment' 'HEADLESS SERVER' 'enable sshd' )
 SYSTEM_TYPE=$(dialog_menu "$TITLE" "Please choose Type of System to install:" "${SYSTEM_TYPES[@]}")

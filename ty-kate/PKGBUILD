@@ -2,7 +2,7 @@
 pkgname="ty-kate"
 pkgdesc="kate with custom dependencies and config"
 pkgver=1.6.0.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/tyguius/'
 arch=('x86_64')
 license=('custom')

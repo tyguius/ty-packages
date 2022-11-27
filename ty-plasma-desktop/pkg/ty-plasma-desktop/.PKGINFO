@@ -2,11 +2,14 @@
 # using fakeroot version 1.30.1
 pkgname = ty-plasma-desktop
 pkgbase = ty-plasma-desktop
-pkgver = 0.0.0.4-2
+pkgver = 0.0.0.4-3
 pkgdesc = custom configuration of plasma desktop and some applications
 url = https://github.com/tyguius/tyrepo
-builddate = 1669569313
+builddate = 1669576591
 packager = tyguius <ta.tgyns13@gmail.com>
 size = 1582
 arch = x86_64
 license = custom
+depend = ty-kde-utilities-meta
+depend = klassy
+depend = kwin-bismuth-bin

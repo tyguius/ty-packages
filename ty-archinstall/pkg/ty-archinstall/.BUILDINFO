@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-archinstall
 pkgbase = ty-archinstall
-pkgver = 0.5.1.0-3
+pkgver = 0.5.1.0-4
 pkgarch = x86_64
-pkgbuild_sha256sum = 0605b0fe54636b9278969342fbf3b962d66bb00ea70600ed8acc463582011bc8
+pkgbuild_sha256sum = 16386bfdfd2b0480ca9077b5c69890fbe86b343445b1a4a2b3e8c5e606d5275f
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669576322
+builddate = 1669576565
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-archinstall
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-archinstall
 buildtool = makepkg

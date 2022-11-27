@@ -1,0 +1,90 @@
+#!/bin/bash
+###########################################################
+# check for root access
+###########################################################
+if ! ls /root
+then
+    echo -e "no root access. Try: \n$ sudo ty-archinstall"
+    exit 1
+fi
+###########################################################
+# DIALOG
+###########################################################
+# dimensions of dialog boxes
+COLS=$(tput cols)
+LINES=$(tput lines)
+WIDTH=$((COLS/2))
+HEIGHT=$((LINES/2))
+DIMENSIONS="$HEIGHT $WIDTH"
+
+BACKTITLE="TY-ARCHINSTALL"
+
+# dialog_menu TITLE TEXT MENUITEMS[@]
+dialog_menu() {
+    local _DIALOG_ARGUMENTS=("$@")
+    local _MENU_ITEMS=("${_DIALOG_ARGUMENTS[@]:2}")
+    dialog --clear --stdout --backtitle "$BACKTITLE" --title "$1" --menu "$2" $DIMENSIONS "$(${#_MENU_ITEMS})" "${_MENU_ITEMS[@]}"
+}
+
+
+###########################################################
+# KEYBOARD
+###########################################################
+
+choose_keymap() {
+    KEYMAP_MENUITEMS=( 'default' 'English(US)' 'de-latin1' 'German' )
+    TITLE="KEYBOARD LAYOUT"
+    # Keymap menu
+    KEYMAP=$(dialog_menu "KEYBOARD" "Please choose Keyboard Layout:" "${KEYMAP_MENUITEMS[@]}")
+    # confirm choice
+    if dialog --clear --stdout --backtitle "$BACKTITLE" --title "$TITLE" --yesno "Continue with Keyboard Layout $KEYMAP?" $DIMENSIONS
+    then
+        # check choice
+        if [[ "$KEYMAP" != "default" ]]
+        then
+            # check loading of keymap
+            if loadkeys "$KEYMAP"
+            then
+                MESSAGE="Keymap $KEYMAP has been loaded successfully"
+                echo "$KEYMAP" >> /tmp/ty_keymap
+            else
+                MESSAGE="Keymap $KEYMAP could not be loaded."
+                dialog --clear --backtitle "TY-ARCHISO" --title "$TITLE" --msgbox "$MESSAGE" $DIMENSIONS
+                choose_keymap
+            fi
+        # default choice
+        else
+            MESSAGE="Keymap has not been changed. Continue with default (us)"
+        fi
+    else
+        # back to Keymap menu
+        choose_keymap
+    fi
+    # inform user
+    dialog --clear --backtitle "TY-ARCHISO" --title "$TITLE" --msgbox "$MESSAGE" $DIMENSIONS
+}
+
+choose_keymap
+
+menu() {
+    TITLE="$BACKTITLE MENU"
+    MENUITEMS=('START ty-archinstall' 'Start installer now' 'UPGRADE ty-archinstall' 'upgrade ty-archinstall to latest version' 'LIVE SYSTEM' 'drop to live system shell  (root@ty-archiso)')
+    PACKAGE_VERSION=$(pacman -Q --info ty-archinstall | grep 'Version' | grep -o '[0-9].*')
+    TEXT="Please choose how to proceed:\nCurrent version of ty-archinstall: $PACKAGE_VERSION"
+    CHOICE=$(dialog_menu "$TITLE" "$TEXT" "${MENUITEMS[@]}")
+    case "$CHOICE"
+    in
+        "START ty-archinstall")
+            /usr/share/ty/ty-archinstall/ty-archinstall.sh;;
+        "UPGRADE ty-archinstall")
+            pacman -Sy
+            pacman -S ty-archinstall --noconfirm
+            menu;;
+        "LIVE SYSTEM")
+            return;;
+    esac
+}
+
+menu
+
+

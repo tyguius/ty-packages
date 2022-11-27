@@ -1,0 +1,21 @@
+# Template for tydomain
+# Maintainer tyguius <ta.tgyns13[at]gmail.com>
+pkgname="ty-archinstall"
+pkgdesc="Script to automate arch linux system setup in the tydomain"
+pkgver=0.5.0.0
+pkgrel=1
+url="https://github.com/tyguius/tyrepo"
+arch=('x86_64')
+license=('custom')
+installdir=/usr/share/ty/ty-archinstall/
+source ../ty-frame.sh
+
+sources_from_file
+package() {
+    mkdir -p "${pkgdir}$installdir"
+    depends_from_file
+    install -D --verbose "${srcdir}/ty-archinstall.sh" "${pkgdir}$installdir"
+    install -D --verbose "${srcdir}/ty-archinstall" "${pkgdir}/usr/bin/"
+}
+sha256sums=('f99a1aff27828b591eab96c09bec58a4e27c8c98399b70b1f748c3a209ceac3f'
+            'e4c72550fedaf90dc341c4a8339ee892c0db96e4aab26ec66de0f4933b4753b4')

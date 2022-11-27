@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-devel-school-meta
 pkgbase = ty-devel-school-meta
-pkgver = 0.0.0.2-3
+pkgver = 0.0.0.2-4
 pkgarch = x86_64
-pkgbuild_sha256sum = a35832921dc6d4c4c5e89213fa90ec0f4339af4e397ccb15ec16073e3e9e643f
+pkgbuild_sha256sum = 6933cfe564b4893d1022ad7e9a3199006cee1f7a47d57cea66efb42b34ef15dc
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669481646
+builddate = 1669569788
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-devel-school-meta
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-devel-school-meta
 buildtool = makepkg

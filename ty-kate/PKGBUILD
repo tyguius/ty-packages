@@ -1,7 +1,7 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-kate"
 pkgdesc="kate with custom dependencies and config"
-pkgver=1.5.0.2
+pkgver=1.6.0.0
 pkgrel=1
 url='https://github.com/tyguius/'
 arch=('x86_64')

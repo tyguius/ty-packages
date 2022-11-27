@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-kde-utilities-meta
 pkgbase = ty-kde-utilities-meta
-pkgver = 0.1.1.3-4
+pkgver = 0.1.1.3-5
 pkgarch = x86_64
-pkgbuild_sha256sum = cb52fc028d2ae678098ba34b02c6bb040cec2b60f5258a867b0eed314a25762d
+pkgbuild_sha256sum = 2b98d57eda8ef097e12353408be1c901d7d3f53670e2de5019ee7a0e62c40845
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669577277
+builddate = 1669585589
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kde-utilities-meta
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kde-utilities-meta
 buildtool = makepkg

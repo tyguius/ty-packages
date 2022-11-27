@@ -3,7 +3,7 @@
 pkgname="ty-devel-school-meta"
 pkgdesc="packages needed for UNI and coding"
 pkgver=0.0.0.2
-pkgrel=6
+pkgrel=7
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

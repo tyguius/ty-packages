@@ -4,9 +4,9 @@ intellij-idea-community-edition
 jdk11-openjdk
 jdk17-openjdk
 texstudio
-texlive
+# texlive
 # rstudio-desktop-bin
 r
 base-devel
 # whole package group (kmail etc)
-kde-pim
+# kde-pim

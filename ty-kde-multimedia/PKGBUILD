@@ -3,7 +3,7 @@
 pkgname="ty-kde-multimedia"
 pkgdesc="multimedia package collection"
 pkgver=0.0.1.1
-pkgrel=2
+pkgrel=3
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-kate
 pkgbase = ty-kate
-pkgver = 1.6.0.0-2
+pkgver = 1.6.0.0-3
 pkgarch = x86_64
-pkgbuild_sha256sum = 9df3cecfddbd2a0dde45bb41fdfe951ada47e3dc0bd7b1051c3b5213a9707422
+pkgbuild_sha256sum = 8655b36498fd50331b272d681bab22115251e2f4d5c939ab3e0d1b3258d8c7d3
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669576576
+builddate = 1669577138
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kate
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kate
 buildtool = makepkg

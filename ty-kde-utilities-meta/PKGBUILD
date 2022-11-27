@@ -2,7 +2,7 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-kde-utilities-meta"
 pkgdesc="Meta package with Core utilitites for KDE Plasma Desktop Environment"
-pkgver=0.1.1.1
+pkgver=0.1.1.2
 pkgrel=1
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')

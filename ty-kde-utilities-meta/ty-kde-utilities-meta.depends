@@ -20,6 +20,5 @@ print-manager
 skanpage
 sweeper
 yakuake
-syncthing
-syncthingtray
+ty-syncthing-desktop
 

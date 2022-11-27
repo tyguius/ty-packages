@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-syncthing-server
 pkgbase = ty-syncthing-server
-pkgver = 0.0.1.0-2
+pkgver = 0.0.1.0-3
 pkgarch = x86_64
-pkgbuild_sha256sum = 2c1b09c849d198436c467982fcee7cf2400c9101d937c1c249f6742a1ce09e19
+pkgbuild_sha256sum = 2c1b3e5f937d5c3c4e7abdc12a7d57f60a962d3f7da19f2ce0632d5cf9f2caf4
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669576600
+builddate = 1669577355
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-syncthing-server
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-syncthing-server
 buildtool = makepkg

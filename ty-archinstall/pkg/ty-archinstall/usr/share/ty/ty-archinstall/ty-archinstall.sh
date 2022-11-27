@@ -463,7 +463,7 @@ choose_login_shell() {
     USER_SHELL=$(dialog_menu "USER LOGIN SHELL" "Please choose the default login shell for $USER_NAME '$USER_NAME_FULL'\nShells other than bash will be installed, if you want to install additional shells, you can install them later manually:" "${USER_SHELL_MENUITEMS[@]}")
     if [[ "$USER_SHELL" != "bash" ]]
     then
-        arch-chroot /mnt pacman -S $USER_SHELL
+        arch-chroot /mnt pacman -S $USER_SHELL --noconfirm
     fi
     echo "USER_SHELL=$USER_SHELL" >> /tmp/ty/log
 }
@@ -471,7 +471,7 @@ choose_login_shell() {
 choose_editor() {
     EDITOR_MENUITEMS=('vi' 'VIsual editor' 'vim' 'VI Improved' 'nano' 'Pico text editor emulation' )
     EDITOR=$(dialog_menu "EDITOR" "Please choose editor to set as default in environment variable \$EDITOR" "${EDITOR_MENUITEMS[@]}")
-    arch-chroot /mnt pacman -S $EDITOR
+    arch-chroot /mnt pacman -S $EDITOR --noconfirm
     echo "EDITOR=$EDITOR" >> /mnt/etc/environment
     echo "EDITOR=$EDITOR" >> /tmp/ty/log
 }
@@ -500,7 +500,7 @@ choose_desktop_packages() {
 
 desktop_install() {
     XORG_PACKAGES=('xorg' 'xf86-video-nouveau')
-    DESKTOP_PACKAGES_BASIC=('sddm' 'plasma' 'konsole' 'kwrite' 'okular' 'dolphin' 'fuse2' 'xclip' 'ttf-dejavu' 'pipewire-jack' 'pipewire-media-session' 'phonon-qt-5-vlc' 'python-pyqt5')
+    DESKTOP_PACKAGES_BASIC=('sddm' 'plasma' 'konsole' 'kwrite' 'okular' 'dolphin' 'fuse2' 'xclip' 'ttf-dejavu' 'pipewire-jack' 'pipewire-media-session' )
 #    SOUND_PACKAGES=('pulseaudio' 'pulseaudio-jack' 'pulseaudio-alsa' 'phonon-qt-5-vlc'  'kmix')
     choose_desktop_packages
     arch-chroot /mnt pacman -S "${XORG_PACKAGES[@]}"

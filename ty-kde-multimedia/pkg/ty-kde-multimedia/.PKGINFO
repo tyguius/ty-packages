@@ -2,11 +2,20 @@
 # using fakeroot version 1.30.1
 pkgname = ty-kde-multimedia
 pkgbase = ty-kde-multimedia
-pkgver = 0.0.1.1-1
+pkgver = 0.0.1.1-2
 pkgdesc = multimedia package collection
 url = https://github.com/tyguius/tyrepo
-builddate = 1669569513
+builddate = 1669576581
 packager = tyguius <ta.tgyns13@gmail.com>
 size = 0
 arch = x86_64
 license = custom
+depend = pulseaudio
+depend = firefox
+depend = firefox-ublock-origin
+depend = vlc
+depend = pulseaudio-alsa
+depend = juk
+depend = phonon-qt-5
+depend = digikam
+depend = ffmpeg

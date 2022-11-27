@@ -3,7 +3,7 @@
 pkgname="ty-kde-utilities-meta"
 pkgdesc="Meta package with Core utilitites for KDE Plasma Desktop Environment"
 pkgver=0.1.1.3
-pkgrel=2
+pkgrel=3
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

@@ -1,11 +1,11 @@
 format = 2
 pkgname = ty-kde-multimedia
 pkgbase = ty-kde-multimedia
-pkgver = 0.0.1.1-1
+pkgver = 0.0.1.1-2
 pkgarch = x86_64
-pkgbuild_sha256sum = 28ca453dff74c72d56f2d448225899b00159f418cc94144e7d36cb6997e31bb7
+pkgbuild_sha256sum = cfdd49c28d0c864e4d83e18e4bfb8a915003a9d54c9cd735c695fa65de42776a
 packager = tyguius <ta.tgyns13@gmail.com>
-builddate = 1669569513
+builddate = 1669576581
 builddir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kde-multimedia
 startdir = /home/lukas/Projects/tyrepo-dev/ty-packages/ty-kde-multimedia
 buildtool = makepkg

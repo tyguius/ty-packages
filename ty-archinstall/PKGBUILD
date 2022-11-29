@@ -2,8 +2,8 @@
 # Maintainer tyguius <ta.tgyns13[at]gmail.com>
 pkgname="ty-archinstall"
 pkgdesc="Script to automate arch linux system setup in the tydomain"
-pkgver=0.5.3.0
-pkgrel=2
+pkgver=0.5.4.0
+pkgrel=1
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')

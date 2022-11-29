@@ -312,12 +312,19 @@ DEVICES=($(fdisk -l | grep "^/dev/" | awk '{ print $1 }'))
 mount_root_partition
 
 # choose and optionally format efi system partition
-TITLE="EFI PARTITION"
+TITLE="BOOT PARTITION"
 
 mount_efi_partition() {
+    if $UEFI
+    then
+        BIOS_MESSAGE=" "
+    else
+        BIOS_MESSAGE="\nSystem booted in BIOS mode!!"
+    fi
+
     # choose path to efi system partition
-    EFI_PATH_MENUITEMS=('/efi' 'recommended' '/boot/efi' '' '/boot' '')
-    EFI_PATH=$(dialog_menu "$TITLE" "please choose mount point for efi partition:" "${EFI_PATH_MENUITEMS[@]}")
+    EFI_PATH_MENUITEMS=('/efi' 'recommended for UEFI boot' '/boot/efi' '' '/boot' 'needed for BIOS boot')
+    EFI_PATH=$(dialog_menu "$TITLE" "please choose mount point for efi partition:$BIOS_MESSAGE" "${EFI_PATH_MENUITEMS[@]}")
     EFI_DEVICE=$(choose_device "Please choose device to mount at $EFI_PATH:")
 
     # otionally format device
@@ -445,22 +452,24 @@ arch-chroot /mnt systemctl enable NetworkManager
 sleep 10
 if [[ -L /mnt/etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service ]]
 then
-    MESSAGE="enabling 'NetworkManager.service' appears to have worked"
+    echo "enabling 'NetworkManager.service' appears to have worked" > /tmp/ty/networkmessage
 else
-    MESSAGE="enabling 'NetworkManager.service' appears to NOT have worked"
+    echo "enabling 'NetworkManager.service' appears to NOT have worked" > /tmp/ty/networkmessage
 fi
 
-dialog_message "$TITLE" "$MESSAGE"
+ifconfig >> /tmp/ty/networkmessage
 
+dialog_message "$TITLE" "$(cat /tm/ty/networkmessage)"
 
-wifi_setup() {
-
-}
-
-if dialog_yesno "$TITLE" "Need to install WLAN support?"
-then
-    wifi_setup
-fi
+#
+# wifi_setup() {
+#
+# }
+#
+# if dialog_yesno "$TITLE" "Need to install WLAN support?"
+# then
+#     wifi_setup
+# fi
 ###########################################################
 # SHELL & EDITOR
 ###########################################################
@@ -607,9 +616,9 @@ get_password
 ###########################################################
 # GRUB
 ###########################################################
-TITLE="GRUB"
+TITLE="BOOT LOADER"
 bootloader_grub() {
-    if dialog_yesno "$TITLE" "Want to install bootloader 'GRUB2'?" "SETUP GRUB" "CONTINUE WITHOUT BOOTLOADER"
+    if dialog_yesno "$TITLE" "Want to install bootloader 'GRUB2'?\nGRUB2 is recommended for Systems supporting UEFI boot" "SETUP GRUB" "CONTINUE WITHOUT BOOTLOADER"
     then
         arch-chroot /mnt pacman -S efibootmgr grub os-prober --noconfirm
         sed '/GRUB_DISABLE_OS_PROBER=false/s/^#//' -i /mnt/etc/default/grub
@@ -618,8 +627,26 @@ bootloader_grub() {
         sleep 10
     fi
 }
+bootloader_syslinux() {
+    arch-chroot /mnt pacman -S syslinux gptfdisk mtools
+    syslinux-install_update -i -a -m -c /mnt
+    ROOT_UUID=$(lsblk -no UUID "$ROOT_DEVICE")
+    for MODULE in $(ls /mnt/usr/lib/syslinux/bios/*.c32)
+    do
+        cp $MODULE /mnt/boot/syslinux
+    done
+    cp /usr/share/ty/ty-archinstall/ty_syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
+    sed "s/UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/UUID=$ROOT_UUID/" /mnt/boot/syslinux/syslinux.cfg
+    cp /usr/share/ty/ty-archinstall/splash.png /mnt/boot/syslinux/
+}
 
-bootloader_grub
+
+if $UEFI
+then
+    bootloader_grub
+else
+    bootloader_syslinux
+fi
 
 ###########################################################
 # REBOOT

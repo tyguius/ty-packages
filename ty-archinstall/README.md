@@ -5,9 +5,18 @@ ncurses installer for Arch Linux implemented with dialog
 ```bash
 update_ty-archiso.sh
 ```
+## TEST ASUS X555L medialap
+- check if if area and system locale are the same, it gets written twice
+### WLAN
+broadcom drivers:
+```bash
+broadcom-wl-dmks
+```
+
 
 
 ## TODO's:
+- [ ] Wifi support (broadcom)
 - [ ] repair loginshell variable at useradd
 - [ ] get possible Keymap Items from list
         - ls /usr/share/kbd/keymaps/**/*.map.gz | xargs -n1 basename | sed .map.gz^C

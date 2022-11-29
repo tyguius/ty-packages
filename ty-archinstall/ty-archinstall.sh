@@ -440,6 +440,7 @@ arch-chroot /mnt locale-gen
 ###########################################################
 echo "$HOST_NAME" > /mnt/etc/hostname
 
+TITLE="NETWORK CONFIGURATION"
 arch-chroot /mnt systemctl enable NetworkManager
 sleep 10
 if [[ -L /mnt/etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service ]]
@@ -449,8 +450,17 @@ else
     MESSAGE="enabling 'NetworkManager.service' appears to NOT have worked"
 fi
 
-dialog_message "NETWORK CONFIGURATION" "$MESSAGE"
+dialog_message "$TITLE" "$MESSAGE"
 
+
+wifi_setup() {
+
+}
+
+if dialog_yesno "$TITLE" "Need to install WLAN support?"
+then
+    wifi_setup
+fi
 ###########################################################
 # SHELL & EDITOR
 ###########################################################
@@ -484,6 +494,12 @@ choose_editor
 # PACKAGES
 ###########################################################
 server_install() {
+    if [[ "$EDITOR" = "nano" ]]
+    then
+        arch-chroot /mnt pacman -S nano-syntax-highlighting
+        (echo 'include "/usr/share/nano/*.nanorc"'; echo 'include "/usr/share/nano-syntax-highlighting/*.nanorc"') >> /mnt/etc/nanorc
+    fi
+
     arch-chroot /mnt pacman -S openssh
     arch-chroot /mnt systemctl enable sshd.service
     sleep 10
@@ -544,7 +560,7 @@ echo "%sudo   ALL=(ALL:ALL) ALL" >> "/mnt/etc/sudoers.d/10-$USER_NAME"
 # set sudo timeout to 10 minutes
 echo "Defaults timestamp_timeout=10" >> "/mnt/etc/sudoers.d/10-$USER_NAME"
 # issue bell if terminal out of focus needs attention for sudo password prompt
-echo 'Defaults passprompt="^G[sudo] password for %p: "' >> "/mnt/etc/sudoers.d/10-$USER_NAME"
+# echo 'Defaults passprompt="^G[sudo] password for %p: "' >> "/mnt/etc/sudoers.d/10-$USER_NAME"
 echo "Defaults insults" >> "/mnt/etc/sudoers.d/10-$USER_NAME"
 
 
@@ -555,7 +571,15 @@ echo "Defaults insults" >> "/mnt/etc/sudoers.d/10-$USER_NAME"
 
 
 # useradd
-arch-chroot /mnt useradd -m -G sudo -c "$USER_NAME_FULL" -s /bin/$USER_SHELL $USER_NAME
+case "$SYSTEM_TYPE"
+in
+    "DESKTOP")
+        arch-chroot /mnt useradd -m -G sudo -c "$USER_NAME_FULL" -s /bin/$USER_SHELL $USER_NAME;;
+    "HEADLESS SERVER")
+        arch-chroot /mnt useradd -m -G sudo -s /bin/$USER_SHELL $USER_NAME;;
+esac
+
+
 sleep 15
 
 # TODO

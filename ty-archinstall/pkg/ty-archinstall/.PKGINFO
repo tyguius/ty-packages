@@ -2,10 +2,10 @@
 # using fakeroot version 1.30.1
 pkgname = ty-archinstall
 pkgbase = ty-archinstall
-pkgver = 0.5.3.0-2
+pkgver = 0.5.4.0-1
 pkgdesc = Script to automate arch linux system setup in the tydomain
 url = https://github.com/tyguius/tyrepo
-builddate = 1669759818
+builddate = 1669759896
 packager = tyguius <ta.tgyns13@gmail.com>
 size = 71450
 arch = x86_64

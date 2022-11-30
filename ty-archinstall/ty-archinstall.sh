@@ -627,17 +627,31 @@ bootloader_grub() {
         sleep 10
     fi
 }
+bootloader_syslinux_config() {
+    ROOT_UUID=$(lsblk -no UUID "$ROOT_DEVICE")
+#     for MODULE in $(ls /mnt/usr/lib/syslinux/bios/*.c32)
+#     do
+#         cp $MODULE /mnt/boot/syslinux
+#     done
+    cp -f /usr/share/ty/ty-archinstall/ty_syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
+    sed "s/UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/UUID=$ROOT_UUID/" /mnt/boot/syslinux/syslinux.cfg
+    cp /usr/share/ty/ty-archinstall/splash.png /mnt/boot/syslinux/
+    nano /mnt/boot/syslinux.cfg
+}
+
 bootloader_syslinux() {
     arch-chroot /mnt pacman -S syslinux gptfdisk mtools
     syslinux-install_update -i -a -m -c /mnt
-    ROOT_UUID=$(lsblk -no UUID "$ROOT_DEVICE")
-    for MODULE in $(ls /mnt/usr/lib/syslinux/bios/*.c32)
-    do
-        cp $MODULE /mnt/boot/syslinux
-    done
-    cp /usr/share/ty/ty-archinstall/ty_syslinux.cfg /mnt/boot/syslinux/syslinux.cfg
-    sed "s/UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/UUID=$ROOT_UUID/" /mnt/boot/syslinux/syslinux.cfg
-    cp /usr/share/ty/ty-archinstall/splash.png /mnt/boot/syslinux/
+    if [[ -f /mnt/boot/syslinux.cfg ]]
+    then
+        nano /mnt/boot/syslinux.cfg
+        if dialog_yesno "SYSLINUX" "Want to overwrite existing syslinux config?" "YES" "CONTINUE WITH CURRENT CONFIG"
+        then
+            bootloader_syslinux_config
+        fi
+    else
+        bootloader_syslinux_config
+    fi
 }
 
 

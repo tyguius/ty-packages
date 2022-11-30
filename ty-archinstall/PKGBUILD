@@ -3,7 +3,7 @@
 pkgname="ty-archinstall"
 pkgdesc="Script to automate arch linux system setup in the tydomain"
 pkgver=0.5.4.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/tyguius/tyrepo"
 arch=('x86_64')
 license=('custom')
@@ -22,7 +22,7 @@ package() {
     install -D --verbose "${srcdir}/splash.png" "${pkgdir}$installdir"
 }
 
-sha256sums=('adeb0f1d2a9ce857233c399fb10ed52292d06ce1858ffb17fc320190b7d891ac'
+sha256sums=('4efc4cb44eecb5c495484a1ea7b4e40a6b8dbb1e1330dda0e6846ef75b1fc7df'
             'e4c72550fedaf90dc341c4a8339ee892c0db96e4aab26ec66de0f4933b4753b4'
             'acaeafbc291d91f9eae111c7fbb985c705ffe55ee368388b2151f56c31f6a708'
             'efedc11aeaaf6743dccd68df40f5f7cb71fe0efea9a4f24b8ce8b6e3ca73f686')
